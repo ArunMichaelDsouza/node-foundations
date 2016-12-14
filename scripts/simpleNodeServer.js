@@ -28,6 +28,7 @@ var fs = require('fs'),
 
 
 // Node server response creation with 'request' event
+
  var server = http.createServer();
 
  server.on('request', function(req, res) {

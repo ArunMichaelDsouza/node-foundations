@@ -4,7 +4,7 @@ var fs = require('fs'),
 	path = require('path');
 
 var file1 = path.join(__dirname, '../../files/file.txt'),
-	file2 = path.join(__dirname, '../../files/new-file.txt');
+	file2 = path.join(__dirname, '../../files/copied-file.txt');
 
 // Create read and write streams
 var readStream = fs.createReadStream(file1), 

@@ -14,7 +14,7 @@ var filePath = path.join(__dirname, '../files/file.txt'); // Required as relativ
 
 var contentsSync = fs.readFileSync(filePath, 'UTF-8'); // Provide encoding param for proper content rendering
 console.log('Synchronous request result -');
-console.log(contentsSync);
+console.log(contentsSync); // Or use toString() for proper content rendering
 
 
 

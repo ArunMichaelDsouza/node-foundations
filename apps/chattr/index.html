@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chattr</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>Chattr</h1>
+    <ul id="chat"></ul>
+    <textarea id="message"></textarea>
+    <br/>
+    <button id="addMessage">Send</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.min.js"></script>
+    <script>
+    var socket = io();
+
+    var submit = document.getElementById('addMessage'),
+        messageBox = document.getElementById('message'),
+        chat = document.getElementById('chat');
+
+    function addNewMessage(text) {
+        var li = document.createElement('li'),
+            text = document.createTextNode(text);
+
+        li.appendChild(text);
+        chat.appendChild(li);
+    };
+
+    function submitMessage() {
+        if (messageBox.value !== '') {
+        	socket.emit('message', messageBox.value);
+            addNewMessage(messageBox.value);
+            messageBox.value = '';
+        }
+    };
+
+    socket.on('message', function(text) {
+    	addNewMessage(text);
+    });
+
+    submit.addEventListener('click', submitMessage);
+    </script>
+</body>
+
+</html>
